@@ -8,6 +8,10 @@ class ContractsController < ApplicationController
     @contract.save
   end
 
+  def index
+    @contracts = Contract.all
+  end
+
   private
   
   def upload_params
