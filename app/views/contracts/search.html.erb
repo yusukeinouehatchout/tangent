@@ -1,1 +1,22 @@
 <h1>契約書検索</h1>
+
+<%= form_with url: '/contracts/:id', local: true do |f| %>
+  <div>
+    <div>
+      <label>ID</label>
+    </div>
+    <%= f.text_field :id %>
+  </div>
+
+  <div>
+    <div>
+      <label>パスワード</label>
+    </div>
+    <%= f.text_field :pass %>
+  </div>
+
+  <div>
+    <%= f.submit '検索' %>
+  </div>
+
+<% end %>
