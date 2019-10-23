@@ -12,6 +12,10 @@ class ContractsController < ApplicationController
     @contracts = Contract.all
   end
 
+  def search
+
+  end
+
   private
   
   def upload_params
