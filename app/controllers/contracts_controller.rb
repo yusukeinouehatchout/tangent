@@ -6,6 +6,7 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(upload_params)
     @contract.save
+    redirect_to contracts_path
   end
 
   def index
