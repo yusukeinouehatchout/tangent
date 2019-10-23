@@ -3,9 +3,23 @@
 <%= form_with model: @contract do |f| %>
   <div>
     <%= f.label :pdf_file %>
+    <div>
+      <%= f.file_field :pdf_file %>
+    </div>
   </div>
+
   <div>
-    <%= f.file_field :pdf_file %>
+    <%= f.label :name, '契約書の名前' %>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :pass, 'パスワード' %>
+    <div>
+      <%= f.text_field :pass %>
+    </div>
   </div>
 
   <div>

@@ -23,7 +23,7 @@ class ContractsController < ApplicationController
   private
   
   def upload_params
-    params.require(:contract).permit(:pdf_file)
+    params.require(:contract).permit(:pdf_file, :name, :pass)
   end
 
   def seach_params
