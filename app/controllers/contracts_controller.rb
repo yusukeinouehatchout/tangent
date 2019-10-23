@@ -16,6 +16,10 @@ class ContractsController < ApplicationController
 
   end
 
+  def show
+
+  end
+
   private
   
   def upload_params
