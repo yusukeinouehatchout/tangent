@@ -1,1 +1,6 @@
 <h1>契約書詳細</h1>
+
+<div>
+  <p>ID:<%= @contract.id %></p>
+</div>
+<object data=<%= url_for(@contract.pdf_file)%> height="500px"></object>

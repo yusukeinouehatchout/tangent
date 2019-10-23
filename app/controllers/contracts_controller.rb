@@ -17,12 +17,16 @@ class ContractsController < ApplicationController
   end
 
   def show
-
+    @contract = Contract.find(seach_params[:id])
   end
 
   private
   
   def upload_params
     params.require(:contract).permit(:pdf_file)
+  end
+
+  def seach_params
+    params.permit(:id)
   end
 end
