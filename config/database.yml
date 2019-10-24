@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: ContractApp_production
-  username: ContractApp
-  password: <%= ENV['CONTRACTAPP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encording: unicode
+  pool: 5
