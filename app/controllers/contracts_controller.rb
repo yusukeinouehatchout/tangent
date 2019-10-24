@@ -31,7 +31,7 @@ class ContractsController < ApplicationController
   private
   
   def upload_params
-    params.require(:contract).permit(:pdf_file, :name, :pass)
+    params.require(:contract).permit(:pdf_file, :name, :pass).merge(user_id: current_user.id)
   end
 
   def seach_params
