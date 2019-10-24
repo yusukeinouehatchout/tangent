@@ -10,7 +10,7 @@ class ContractsController < ApplicationController
   end
 
   def index
-    @contracts = Contract.all
+    @contracts = Contract.where(user_id: current_user.id)
   end
 
   def search
