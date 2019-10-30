@@ -4,3 +4,16 @@
   <p>ID:<%= @contract.id %></p>
 </div>
 <object data=<%= url_for(@contract.pdf_file)%> height="500px"></object>
+
+<div>
+  <h2>署名</h2>
+  <canvas id="canvassample" width="500" height="300" style="border:3px solid #000"></canvas>
+</div>
+<div style="padding:10px">
+  <button type="button" onclick="clearCanvas()">リセット</button>
+</div>
+<div style="padding:10px">
+  <button type="button" onclick="chgImg()" value="1">画像変換</button>
+</div>
+<h2>画像出力<h2> 
+<div id="img-box"><img id="newImg"></div>
