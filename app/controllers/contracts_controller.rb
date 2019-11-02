@@ -28,6 +28,22 @@ class ContractsController < ApplicationController
     end
   end
 
+  def create_pdf
+    sign = Sign.create!(image_data_uri: params[:sign])
+    sign_url = "public/uploads/store/" + sign.image_data.match(/{\"id\":\"(.+)\",\"storage/)[1]
+    
+    respond_to do |format|
+      format.pdf do
+        test_pdf = RecordPdf.new(sign_url).render
+        send_data test_pdf,
+          filename:    'test.pdf',
+          type:        'application/pdf',
+          disposition: 'inline' # 画面に表示
+      end
+    end
+    sign.destroy
+  end
+
   private
   
   def upload_params

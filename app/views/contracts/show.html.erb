@@ -17,3 +17,9 @@
 </div>
 <h2>画像出力<h2> 
 <div id="img-box"><img id="newImg"></div>
+
+<!-- jsを使って、出力された画像のURIをhidden_fieldに持たせる -->
+<%= form_with(url: contracts_create_pdf_path(format: "pdf"), local: true) do |f| %>
+  <%= f.hidden_field :sign, value: "", id: "param_sign" %>
+  <%= f.submit %>
+<% end %>

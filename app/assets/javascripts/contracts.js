@@ -81,6 +81,9 @@ function chgImg()
   var png = canvas.toDataURL();
 
   document.getElementById("newImg").src = png;
+
+  // 出力された画像のURLをパラメーターに持たせる
+  document.getElementById("param_sign").value = png;
 }
 
 function initLocalStorage(){
