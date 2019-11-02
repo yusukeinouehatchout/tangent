@@ -3,7 +3,7 @@ require "shrine/storage/file_system"
 
 # アップロードするディレクトリの指定
 Shrine.storages = {
-    # cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
+    cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
     store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store")}
 
 # 使用するプラグインの宣言
