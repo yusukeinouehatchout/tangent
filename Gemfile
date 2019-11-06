@@ -74,3 +74,7 @@ gem 'prawn'
 gem 'prawn-table'
 
 gem 'shrine'
+
+gem 'combine_pdf'
+
+gem 'pdf-reader'
