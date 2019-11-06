@@ -31,7 +31,9 @@ class ContractsController < ApplicationController
 
   def create_pdf
     sign = Sign.create!(image_data_uri: params[:sign])
-    sign_url = "public/uploads/store/" + sign.image_data.match(/{\"id\":\"(.+)\",\"storage/)[1]
+    # sign_url = "public/uploads/store/" + sign.image_data.match(/{\"id\":\"(.+)\",\"storage/)[1]
+    sign_url = "public/" + sign.image.url
+    contract_url = "public/" + find_contract.pdf.url
 
     
     respond_to do |format|
@@ -51,7 +53,7 @@ class ContractsController < ApplicationController
 
         combine_pdf = CombinePDF.new
         # combine_pdf << CombinePDF.parse(contract_pdf)
-        # combine_pdf << CombinePDF.load(contract_url)
+        combine_pdf << CombinePDF.load(contract_url)
         combine_pdf << CombinePDF.parse(sign_pdf)
         combine_pdf.save "combined.pdf"
 
