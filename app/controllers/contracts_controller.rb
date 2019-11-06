@@ -29,7 +29,7 @@ class ContractsController < ApplicationController
   end
 
   def create_pdf
-    sign = Sign.create!(image_data_uri: params[:sign])
+    sign = Sign.create!(image_data_uri: sign_params)
     sign_url = "public/" + sign.image.url
     contract_url = "public/" + find_contract.pdf.url
 
@@ -60,6 +60,10 @@ class ContractsController < ApplicationController
 
   def seach_params
     params.permit(:id, :pass)
+  end
+
+  def sign_params
+    params[:sign]
   end
 
   def find_contract
