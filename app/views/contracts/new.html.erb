@@ -1,10 +1,18 @@
 <h1>契約書アップロード</h1>
 
 <%= form_with model: @contract do |f| %>
-  <div>
+<!--
+<div>
     <%= f.label :pdf_file %>
     <div>
       <%= f.file_field :pdf_file %>
+    </div>
+  </div>
+-->
+  <div>
+    <%= f.label :pdf_data %>
+    <div>
+      <%= f.file_field :pdf %>
     </div>
   </div>
 

@@ -4,6 +4,7 @@ class ContractsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @contract = Contract.new(upload_params)
     @contract.save
     redirect_to contracts_path
@@ -77,7 +78,7 @@ class ContractsController < ApplicationController
   private
   
   def upload_params
-    params.require(:contract).permit(:pdf_file, :name, :pass).merge(user_id: current_user.id)
+    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf).merge(user_id: current_user.id)
   end
 
   def seach_params
