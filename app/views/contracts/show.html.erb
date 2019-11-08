@@ -15,11 +15,46 @@
 <div style="padding:10px">
   <button type="button" onclick="chgImg()" value="1">画像変換</button>
 </div>
-<h2>画像出力<h2> 
+<h2>画像出力<h2>
 <div id="img-box"><img id="newImg"></div>
 
-<%= form_with(url: contracts_create_pdf_path(format: "pdf"), local: true) do |f| %>
+<%= form_with(url: contracts_combine_path(format: "pdf"), local: true) do |f| %>
   <%= f.hidden_field :sign, value: "", id: "param_sign" %>    <!-- jsを使って、出力された画像のURIをhidden_fieldに持たせる -->
   <%= f.hidden_field :id, value: @contract.id %>
-  <%= f.submit %>
+  <%= f.submit '署名した契約書をダウンロード' %>
+<% end %>
+
+<h2>署名した契約書を提出する<h2>
+
+<%= form_with url: contracts_create_signed_pdf_path, model: @signed_contract do |f| %>
+  <div>
+    <%= f.label :pdf_data %>
+    <div>
+      <%= f.file_field :pdf %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :name, '契約書の名前' %>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :pass, 'パスワード' %>
+    <div>
+      <%= f.password_field :pass %>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <%= f.hidden_field :user_id, value: @contract.user_id %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit "提出する" %>
+  <div>
 <% end %>

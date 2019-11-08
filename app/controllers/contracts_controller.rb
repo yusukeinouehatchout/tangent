@@ -24,11 +24,12 @@ class ContractsController < ApplicationController
       render 'search'
     else
       @contract = find_contract
+      @signed_contract = Contract.new
       render 'show'
     end
   end
 
-  def create_pdf
+  def combine   # 契約書と署名のpdfをマージして、ユーザーにダウンロードさせる→ダウンロードさせた契約書をアップロードしてもらう
     sign = Sign.create!(image_data_uri: sign_params)
     sign_url = "public/" + sign.image.url
     contract_url = "public/" + find_contract.pdf.url
@@ -37,19 +38,22 @@ class ContractsController < ApplicationController
       format.pdf do
         sign_pdf = RecordPdf.new(sign_url).render
 
-        combine_pdf = CombinePDF.new
-        combine_pdf << CombinePDF.load(contract_url)
-        combine_pdf << CombinePDF.parse(sign_pdf)
-        combine_pdf.save "combined.pdf"
-
-        send_data combine_pdf.to_pdf,
+        @combine_pdf = CombinePDF.new
+        @combine_pdf << CombinePDF.load(contract_url)
+        @combine_pdf << CombinePDF.parse(sign_pdf)
+        @combine_pdf.save "combined.pdf"
+        send_data @combine_pdf.to_pdf,
           filename:    'combined.pdf',
-          type:        'application/pdf',
-          disposition: 'inline' # 画面に表示
+          type:        'application/pdf'
       end
     end
-
     sign.destroy
+  end
+
+  def create_signed_pdf
+    @contract = Contract.new(signed_pdf_params)
+    @contract.save
+    redirect_to root_path
   end
 
   private
@@ -64,6 +68,10 @@ class ContractsController < ApplicationController
 
   def sign_params
     params[:sign]
+  end
+
+  def signed_pdf_params
+    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf, :user_id)
   end
 
   def find_contract

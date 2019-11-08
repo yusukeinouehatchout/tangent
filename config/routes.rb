@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root 'contracts#search'
   post 'contracts/show' => 'contracts#show'
 
-  post 'contracts/create_pdf' => 'contracts#create_pdf'
+  post 'contracts/combine' => 'contracts#combine'
+  post 'contracts/create_signed_pdf' => 'contracts#create_signed_pdf'
 end
