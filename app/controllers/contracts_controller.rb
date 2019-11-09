@@ -10,7 +10,8 @@ class ContractsController < ApplicationController
   end
 
   def index
-    @contracts = Contract.where(user_id: current_user.id)
+    @contracts_templete = Contract.where(user_id: current_user.id, signed: false)
+    @contracts_signed = Contract.where(user_id: current_user.id, signed: true)
   end
 
   def search
@@ -71,7 +72,7 @@ class ContractsController < ApplicationController
   end
 
   def signed_pdf_params
-    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf, :user_id)
+    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf, :user_id, :signed)
   end
 
   def find_contract
