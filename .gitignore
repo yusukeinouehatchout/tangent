@@ -28,3 +28,5 @@
 
 # アップロードされた画像
 /public/uploads/*
+
+/combined.pdf

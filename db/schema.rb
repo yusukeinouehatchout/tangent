@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_092312) do
+ActiveRecord::Schema.define(version: 2019_11_09_102807) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_092312) do
     t.bigint "user_id"
     t.text "pdf_data"
     t.boolean "signed", default: false, null: false
+    t.string "contract_id", default: "0", null: false
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 

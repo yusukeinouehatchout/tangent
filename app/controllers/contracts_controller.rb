@@ -6,6 +6,14 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(upload_params)
     @contract.save
+
+    contract_id = @contract.id
+    contract_id = contract_id.to_s
+    for i in 1..2
+      contract_id += ('A'..'Z').to_a[rand(26)]
+    end
+    @contract.update(contract_id: contract_id)
+
     redirect_to contracts_path
   end
 
