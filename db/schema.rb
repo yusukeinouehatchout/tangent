@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_102807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "pass"
+    t.string "pass", default: "0", null: false
     t.bigint "user_id"
     t.text "pdf_data"
     t.boolean "signed", default: false, null: false
