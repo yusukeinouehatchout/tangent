@@ -1,7 +1,7 @@
 <h1>契約書詳細</h1>
 
 <div>
-  <p>ID:<%= @contract.id %></p>
+  <p>ID:<%= @contract.contract_id %></p>
 </div>
 <object data=<%= @contract.pdf_url%> height="500px"></object>
 
@@ -52,6 +52,7 @@
     <div>
       <%= f.hidden_field :user_id, value: @contract.user_id %>
       <%= f.hidden_field :signed, value: true %>
+      <%= f.hidden_field :signed, value: @contract.id %>
     </div>
   </div>
 

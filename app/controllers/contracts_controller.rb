@@ -31,12 +31,12 @@ class ContractsController < ApplicationController
   end
 
   def show
-    if !Contract.exists?(seach_params[:id])
+    if !Contract.exists?(seach_params[:contract_id])
       render 'search'
-    elsif find_contract.pass != seach_params[:pass]
+    elsif search_contract.pass != seach_params[:pass]
       render 'search'
     else
-      @contract = find_contract
+      @contract = search_contract
       @signed_contract = Contract.new
       render 'show'
     end
@@ -76,7 +76,7 @@ class ContractsController < ApplicationController
   end
 
   def seach_params
-    params.permit(:id, :pass)
+    params.permit(:contract_id, :pass)
   end
 
   def sign_params
@@ -88,6 +88,10 @@ class ContractsController < ApplicationController
   end
 
   def find_contract
-    Contract.find(seach_params[:id])
+    Contract.find(params[:id])
+  end
+
+  def search_contract
+    Contract.find_by(contract_id: seach_params[:contract_id])
   end
 end
