@@ -77,6 +77,12 @@ class ContractsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @contract = find_contract
+    @contract.destroy
+    redirect_back(fallback_location: contracts_path)
+  end
+
   private
   
   def upload_params

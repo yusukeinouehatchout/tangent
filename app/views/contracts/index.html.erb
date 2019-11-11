@@ -6,6 +6,7 @@
     <% @contracts_templete.each do |c| %>
       <div>
         <label>ID:<%= c.contract_id %></label>
+        <%= link_to '削除', contract_path(c), method: :DELETE %>
       </div>
       <object data=<%= c.pdf_url%> height="500px"></object>
     <% end %>
@@ -16,6 +17,7 @@
     <% @contracts_signed.each do |c| %>
       <div>
         <label>ID:<%= c.contract_id %></label>
+        <%= link_to '削除', contract_path(c), method: :DELETE %>
       </div>
       <object data=<%= c.pdf_url%> height="500px"></object>
     <% end %>
