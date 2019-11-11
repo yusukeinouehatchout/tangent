@@ -17,7 +17,7 @@
 <div style="padding:10px">
   <button type="button" onclick="chgImg()" value="1">画像変換</button>
 </div>
-<h2>画像出力<h2>
+<h3>画像出力</h3>
 <div id="img-box"><img id="newImg"></div>
 
 <%= form_with(url: contracts_combine_path(format: "pdf"), local: true) do |f| %>
@@ -26,7 +26,7 @@
   <%= f.submit '署名した契約書をダウンロード' %>
 <% end %>
 
-<h2>署名した契約書を提出する<h2>
+<h2>署名した契約書を提出する</h2>
 
 <%= form_with model: @signed_contract do |f| %>
   <div>
