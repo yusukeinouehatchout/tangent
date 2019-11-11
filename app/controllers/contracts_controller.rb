@@ -31,7 +31,7 @@ class ContractsController < ApplicationController
   end
 
   def show
-    if !Contract.exists?(seach_params[:contract_id])
+    if !Contract.exists?(contract_id: seach_params[:contract_id])
       render 'search'
     elsif search_contract.pass != seach_params[:pass]
       render 'search'
@@ -100,6 +100,6 @@ class ContractsController < ApplicationController
   end
 
   def search_contract
-    Contract.find_by(contract_id: seach_params[:contract_id])
+    Contract.where(signed: false).find_by(contract_id: seach_params[:contract_id])
   end
 end
