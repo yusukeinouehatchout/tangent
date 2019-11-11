@@ -1,10 +1,4 @@
-<% if user_signed_in? %>
-  <p><%= link_to 'ログアウト', destroy_user_session_path, method: "DELETE" %></p>
-  <p><%= link_to 'マイページ', user_path(current_user) %></p>
-<% else %>
-  <p><%= link_to '新規ユーザー登録', new_user_registration_path%></p>
-  <p><%= link_to 'ログイン', new_user_session_path%></p>
-<% end %>
+<%= render partial: 'shared/header' %>
 
 <h1>契約書検索</h1>
 
