@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 2019_11_11_095102) do
   create_table "signed_contracts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "templete_id", default: 0, null: false
+    t.bigint "templete_id", default: 0, null: false
     t.bigint "user_id", default: 0, null: false
     t.text "pdf_data", null: false
     t.string "name", default: "", null: false
+    t.index ["templete_id"], name: "index_signed_contracts_on_templete_id"
     t.index ["user_id"], name: "index_signed_contracts_on_user_id"
   end
 
@@ -73,4 +74,6 @@ ActiveRecord::Schema.define(version: 2019_11_11_095102) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contracts", "users"
+  add_foreign_key "signed_contracts", "contracts", column: "templete_id"
+  add_foreign_key "signed_contracts", "users"
 end

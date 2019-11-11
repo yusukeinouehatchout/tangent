@@ -4,6 +4,7 @@ class SignedContractsController < ApplicationController
   end
 
   def create
+    binding.pry
     @signed_contract = SignedContract.new(signed_contract_params)
     @signed_contract.save
     redirect_to root_path
