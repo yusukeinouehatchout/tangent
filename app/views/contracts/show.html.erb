@@ -44,13 +44,6 @@
   </div>
 
   <div>
-    <%= f.label :pass, 'パスワード' %>
-    <div>
-      <%= f.password_field :pass %>
-    </div>
-  </div>
-
-  <div>
     <div>
       <%= f.hidden_field :user_id, value: @contract.user_id %>
       <%= f.hidden_field :templete_id, value: @contract.id %>
