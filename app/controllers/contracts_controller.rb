@@ -22,7 +22,7 @@ class ContractsController < ApplicationController
   end
 
   def index
-    @contracts_templete = Contract.where(user_id: current_user.id, signed: false)
+    @contracts_templete = Contract.where(user_id: current_user.id)
   end
 
   def search
@@ -71,7 +71,7 @@ class ContractsController < ApplicationController
   private
   
   def upload_params
-    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf).merge(user_id: current_user.id)
+    params.require(:contract).permit(:pdf_file, :pass, :pdf).merge(user_id: current_user.id)
   end
 
   def seach_params
@@ -87,6 +87,6 @@ class ContractsController < ApplicationController
   end
 
   def search_contract
-    Contract.where(signed: false).find_by(contract_id: seach_params[:contract_id])
+    Contract.find_by(contract_id: seach_params[:contract_id])
   end
 end
