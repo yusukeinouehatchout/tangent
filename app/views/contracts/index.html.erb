@@ -6,17 +6,7 @@
     <% @contracts_templete.each do |c| %>
       <div>
         <label>ID:<%= c.contract_id %></label>
-        <%= link_to '削除', contract_path(c), method: :DELETE %>
-      </div>
-      <object data=<%= c.pdf_url%> height="500px"></object>
-    <% end %>
-  </div>
-
-  <div class="contracts__signed">
-    <h2>署名済の契約書</h2>
-    <% @contracts_signed.each do |c| %>
-      <div>
-        <label>ID:<%= c.contract_id %></label>
+        <%= link_to '提出されたものを確認する', signed_contracts_path(templete_id: c.id) %>
         <%= link_to '削除', contract_path(c), method: :DELETE %>
       </div>
       <object data=<%= c.pdf_url%> height="500px"></object>

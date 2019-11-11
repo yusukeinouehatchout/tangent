@@ -26,7 +26,7 @@
 
 <h2>署名した契約書を提出する<h2>
 
-<%= form_with url: contracts_create_signed_pdf_path, model: @signed_contract do |f| %>
+<%= form_with model: @signed_contract do |f| %>
   <div>
     <%= f.label :pdf_data %>
     <div>
@@ -35,7 +35,7 @@
   </div>
 
   <div>
-    <%= f.label :name, '契約書の名前' %>
+    <%= f.label :name, '氏名' %>
     <div>
       <%= f.text_field :name %>
     </div>
@@ -53,6 +53,7 @@
       <%= f.hidden_field :user_id, value: @contract.user_id %>
       <%= f.hidden_field :signed, value: true %>
       <%= f.hidden_field :signed, value: @contract.id %>
+      <%= f.hidden_field :templete_id, value: @contract.id %>
     </div>
   </div>
 

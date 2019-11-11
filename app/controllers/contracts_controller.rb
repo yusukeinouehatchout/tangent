@@ -23,7 +23,6 @@ class ContractsController < ApplicationController
 
   def index
     @contracts_templete = Contract.where(user_id: current_user.id, signed: false)
-    @contracts_signed = Contract.where(user_id: current_user.id, signed: true)
   end
 
   def search
@@ -37,7 +36,7 @@ class ContractsController < ApplicationController
       render 'search'
     else
       @contract = search_contract
-      @signed_contract = Contract.new
+      @signed_contract = SignedContract.new
       render 'show'
     end
   end
@@ -63,20 +62,6 @@ class ContractsController < ApplicationController
     sign.destroy
   end
 
-  def create_signed_pdf
-    @contract = Contract.new(signed_pdf_params)
-    @contract.save
-
-    contract_id = @contract.id
-    contract_id = contract_id.to_s
-    for i in 1..2
-      contract_id += ('A'..'Z').to_a[rand(26)]
-    end
-    @contract.update(contract_id: contract_id)
-
-    redirect_to root_path
-  end
-
   def destroy
     @contract = find_contract
     @contract.destroy
@@ -95,10 +80,6 @@ class ContractsController < ApplicationController
 
   def sign_params
     params[:sign]
-  end
-
-  def signed_pdf_params
-    params.require(:contract).permit(:pdf_file, :name, :pass, :pdf, :user_id, :signed)
   end
 
   def find_contract

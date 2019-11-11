@@ -1,0 +1,2 @@
+module SignedContractsHelper
+end

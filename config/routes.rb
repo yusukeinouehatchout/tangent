@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources :contracts, only: [:new, :create, :index, :destroy]
+  resources :signed_contracts, only: [:create, :index, :show, :destroy]
   root 'contracts#search'
   post 'contracts/show' => 'contracts#show'
   post 'contracts/combine' => 'contracts#combine'
