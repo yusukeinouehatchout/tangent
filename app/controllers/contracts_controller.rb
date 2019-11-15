@@ -1,4 +1,27 @@
 class ContractsController < ApplicationController
+  def api_request
+  end
+
+  def api_response
+    request_type = params[:request_type]
+    request_id = params[:request_id]
+    request_data = JSON.parse(params[:request_data])
+
+    case request_type
+    when 'search'
+      if !Contract.exists?(contract_id: request_data["contract_id"])
+        render json: { massage: '【検索】idに一致する契約書が無い' }
+      elsif Contract.find_by(contract_id: request_data["contract_id"]).pass != request_data["pass"]
+        render json: { massage: '【検索】パスワードが違う' }
+      else
+        contract = Contract.find_by(contract_id: request_data["contract_id"])
+        render json: { massage: '【検索】', id: contract.id, pass: contract.pass, user_id: contract.user_id, pdf_data: contract.pdf_data, contract_id: contract.contract_id, pdf_url: request.protocol + request.host_with_port + contract.pdf.url }
+      end
+    when 'sign'
+      render json: { massage: '署名' }
+    end
+  end
+
   def new
     @contract = Contract.new
   end
