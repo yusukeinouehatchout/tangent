@@ -18,7 +18,7 @@ class ContractsController < ApplicationController
         render json: { massage: '【検索】', id: contract.id, pass: contract.pass, user_id: contract.user_id, pdf_data: contract.pdf_data, contract_id: contract.contract_id, pdf_url: request.protocol + request.host_with_port + contract.pdf.url }
       end
     when 'sign'
-      render json: { massage: '署名' }
+      render json: { massage: '【署名】' }
     end
   end
 
