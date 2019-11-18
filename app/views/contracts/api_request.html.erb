@@ -1,4 +1,4 @@
-<%= form_with url: contracts_api_response_path, local: true do |f| %>
+<%= form_with url: contracts_api_response_path(format: "pdf"), local: true do |f| %>
 
   <p>
     request_type
@@ -17,7 +17,7 @@
 
   <p>
     (request_dataテンプレート)
-    <%= f.text_field :example, value: '{ "id": "", "pass": "", "user_id": "", "pdf_data": "", "contract_id": "" }', style: "width: 1000px" %>
+    <%= f.text_field :example, value: '{ "contract_id": "", "pass": "" }  {"sign_image": "", "id": ""}', style: "width: 1000px" %>
   </p>
 
   <p>

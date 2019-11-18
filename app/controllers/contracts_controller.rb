@@ -18,7 +18,27 @@ class ContractsController < ApplicationController
         render json: { massage: '【検索】', id: contract.id, pass: contract.pass, user_id: contract.user_id, pdf_data: contract.pdf_data, contract_id: contract.contract_id, pdf_url: request.protocol + request.host_with_port + contract.pdf.url }
       end
     when 'sign'
-      render json: { massage: '【署名】' }
+      sign_image = request_data["sign_image"]
+      id = request_data["id"]
+
+      sign = Sign.create!(image_data_uri: sign_image)
+      sign_url = "public/" + sign.image.url
+      contract_url = "public/" + Contract.find(id).pdf.url
+
+      respond_to do |format|
+        format.pdf do
+          sign_pdf = RecordPdf.new(sign_url).render
+  
+          @combine_pdf = CombinePDF.new
+          @combine_pdf << CombinePDF.load(contract_url)
+          @combine_pdf << CombinePDF.parse(sign_pdf)
+          @combine_pdf.save "combined.pdf"
+          send_data @combine_pdf.to_pdf,
+            filename:    'combined.pdf',
+            type:        'application/pdf'
+        end
+      end
+      sign.destroy
     end
   end
 
