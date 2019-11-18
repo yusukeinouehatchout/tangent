@@ -39,6 +39,18 @@ class ContractsController < ApplicationController
         end
       end
       sign.destroy
+    when 'submit'
+      templete_id = request_data["templete_id"]
+      user_id = request_data["user_id"]
+      pdf = params[:pdf]
+      name = request_data["name"]
+
+      @signed_contract = SignedContract.new(templete_id: templete_id, user_id: user_id, pdf: pdf, name: name)
+      if @signed_contract.save
+        render json: { massage: '【提出成功】' }
+      else
+        render json: { massage: '【提出失敗】' }
+      end
     end
   end
 
