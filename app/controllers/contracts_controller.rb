@@ -19,11 +19,13 @@ class ContractsController < ApplicationController
       end
     when 'sign'
       sign_image = request_data["sign_image"]
-      id = request_data["id"]
+      templete_id = request_data["templete_id"]
+      user_id = request_data["user_id"]
+      name = request_data["name"]
 
       sign = Sign.create!(image_data_uri: sign_image)
       sign_url = "public/" + sign.image.url
-      contract_url = "public/" + Contract.find(id).pdf.url
+      contract_url = "public/" + Contract.find(templete_id).pdf.url
 
       respond_to do |format|
         format.pdf do
@@ -39,18 +41,11 @@ class ContractsController < ApplicationController
         end
       end
       sign.destroy
-    when 'submit'
-      templete_id = request_data["templete_id"]
-      user_id = request_data["user_id"]
-      pdf = params[:pdf]
-      name = request_data["name"]
 
-      @signed_contract = SignedContract.new(templete_id: templete_id, user_id: user_id, pdf: pdf, name: name)
-      if @signed_contract.save
-        render json: { massage: '【提出成功】' }
-      else
-        render json: { massage: '【提出失敗】' }
-      end
+      p = Rack::Test::UploadedFile.new("combined.pdf", "application/pdf")
+      @signed_contract = SignedContract.new(templete_id: templete_id, user_id: user_id, pdf: p, name: name)
+      @signed_contract.save
+
     end
   end
 
