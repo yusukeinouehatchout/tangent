@@ -23,6 +23,8 @@ class ContractsController < ApplicationController
       user_id = request_data["user_id"]
       name = request_data["name"]
 
+      uuid = SecureRandom.uuid
+
       sign = Sign.create!(image_data_uri: sign_image)
       sign_url = "public/" + sign.image.url
       contract_url = "public/" + Contract.find(templete_id).pdf.url
@@ -34,7 +36,7 @@ class ContractsController < ApplicationController
           @combine_pdf = CombinePDF.new
           @combine_pdf << CombinePDF.load(contract_url)
           @combine_pdf << CombinePDF.parse(sign_pdf)
-          @combine_pdf.save "combined.pdf"
+          @combine_pdf.save "public/uploads/cache/#{uuid}combined.pdf"
           send_data @combine_pdf.to_pdf,
             filename:    'combined.pdf',
             type:        'application/pdf'
@@ -42,7 +44,7 @@ class ContractsController < ApplicationController
       end
       sign.destroy
 
-      p = Rack::Test::UploadedFile.new("combined.pdf", "application/pdf")
+      p = Rack::Test::UploadedFile.new("public/uploads/cache/#{uuid}combined.pdf", "application/pdf")
       @signed_contract = SignedContract.new(templete_id: templete_id, user_id: user_id, pdf: p, name: name)
       @signed_contract.save
 
