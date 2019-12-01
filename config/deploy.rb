@@ -1,5 +1,5 @@
 # capistranoのバージョン固定
-lock "~> 3.10.1"
+lock "~> 3.11.2"
 
 # デプロイするアプリケーション名
 set :application, 'ContractApp'
@@ -14,7 +14,7 @@ set :branch, 'master'
 set :deploy_to, '/var/www/ContractApp'
 
 # シンボリックリンクをはるファイル
-set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
+set :linked_files, fetch(:linked_files, []).push('config/master.key')
 
 # シンボリックリンクをはるフォルダ
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -24,7 +24,8 @@ set :keep_releases, 5
 
 # rubyのバージョン
 # rbenvで設定したサーバー側のrubyのバージョン
-set :rbenv_ruby, '2.4.1'
+set :rbenv_ruby, '2.5.1'
+set :rbenv_custom_path, '/usr/local/rbenv'
 
 # 出力するログのレベル。
 set :log_level, :debug
@@ -46,10 +47,12 @@ namespace :deploy do
         within current_path do
                 # データベース作成のsqlセット
                 # データベース名はdatabase.ymlに設定した名前で
-                  sql = "CREATE DATABASE IF NOT EXISTS ContractApp_production;"
-                  # クエリの実行。
+                sql = "CREATE DATABASE IF NOT EXISTS ContractApp_production;"
+                # DBのパスワード
+                production_db_password = Rails.application.credentials.production_db_password
+                # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=root --password=root -e '#{sql}'"
+                execute "mysql --user=root --password=#{production_db_password} -e '#{sql}'"
 
         end
       end
