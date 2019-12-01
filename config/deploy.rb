@@ -52,7 +52,7 @@ namespace :deploy do
                 production_db_password = Rails.application.credentials.production_db_password
                 # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=root --password=#{production_db_password} -e '#{sql}'"
+                execute "mysql --user=root --password=Tangent@501 -e '#{sql}'"
 
         end
       end
