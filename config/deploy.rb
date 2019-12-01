@@ -48,8 +48,6 @@ namespace :deploy do
                 # データベース作成のsqlセット
                 # データベース名はdatabase.ymlに設定した名前で
                 sql = "CREATE DATABASE IF NOT EXISTS ContractApp_production;"
-                # DBのパスワード
-                production_db_password = Rails.application.credentials.production_db_password
                 # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
                 execute "mysql --user=root --password=Tangent@501 -e '#{sql}'"
