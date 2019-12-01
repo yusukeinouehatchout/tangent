@@ -5,7 +5,7 @@ lock "~> 3.11.2"
 set :application, 'ContractApp'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'https://git.heroku.com/tangent1024.git'
+set :repo_url, 'https://github.com/shunking-tech/tangent1201.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
