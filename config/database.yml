@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encording: unicode
-  pool: 5
+  database: ContractApp_production
+  
+  #herokuデプロイ用
+  # adapter: postgresql
+  # encording: unicode
+  # pool: 5
