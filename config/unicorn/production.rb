@@ -33,6 +33,7 @@ $worker  = 2
       rescue Errno::ENOENT, Errno::ESRCH
       end
     end
+    ENV['BUNDLE_GEMFILE'] = $app_dir + "/Gemfile"
   end
 
 #fork後に行うことを定義
