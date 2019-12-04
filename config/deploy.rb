@@ -2,10 +2,10 @@
 lock "~> 3.11.2"
 
 # デプロイするアプリケーション名
-set :application, 'ContractApp'
+set :application, 'tangent'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@github.com:yusukeinouehatchout/tangent.git'
+set :repo_url, 'https://github.com/yusukeinouehatchout/tangent.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
