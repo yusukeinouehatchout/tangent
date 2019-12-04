@@ -25,7 +25,7 @@ set :keep_releases, 5
 # rubyのバージョン
 # rbenvで設定したサーバー側のrubyのバージョン
 set :rbenv_ruby, '2.5.1'
-set :rbenv_custom_path, '/usr/local/rbenv'
+set :rbenv_custom_path, '/root/.rbenv'
 
 # 出力するログのレベル。
 set :log_level, :debug
