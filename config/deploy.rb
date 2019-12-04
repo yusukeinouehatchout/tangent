@@ -50,7 +50,7 @@ namespace :deploy do
                 sql = "CREATE DATABASE IF NOT EXISTS ContractApp_production;"
                 # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=#{ENV['TANGENT_DB_USER']} --password=#{ENV['TANGENT_DB_PASSWORD']} -e '#{sql}'"
+                execute "mysql --user=root --password=#{ENV["TANGENT_DB_PASSWORD"]} -e '#{sql}'"
 
         end
       end

@@ -52,7 +52,7 @@ production:
   database: ContractApp_production
   socket: /var/lib/mysql/mysql.sock
   username: root
-  password: Rails.application.credentials.production_db_password
+  password: ENV["TANGENT_DB_PASSWORD"]
   #herokuデプロイ用
   # adapter: postgresql
   # encording: unicode
