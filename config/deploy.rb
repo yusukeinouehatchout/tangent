@@ -5,13 +5,13 @@ lock "~> 3.11.2"
 set :application, 'ContractApp'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'https://github.com/shunking-tech/tangent1201.git'
+set :repo_url, 'git@github.com:yusukeinouehatchout/tangent.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
 
 # deploy先のディレクトリ。
-set :deploy_to, '/var/www/ContractApp'
+set :deploy_to, '/var/www/tangent'
 
 # シンボリックリンクをはるファイル
 set :linked_files, fetch(:linked_files, []).push('config/master.key')
