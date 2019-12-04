@@ -51,8 +51,8 @@ production:
   <<: *default
   database: ContractApp_production
   socket: /var/lib/mysql/mysql.sock
-  username: root
-  password: <%= ENV["TANGENT_DB_PASSWORD"] %>
+  # username: root
+  password: <%= ENV['TANGENT_DB_PASSWORD'] %>
   #herokuデプロイ用
   # adapter: postgresql
   # encording: unicode
