@@ -53,6 +53,7 @@ production:
   socket: /var/lib/mysql/mysql.sock
   # username: root
   password: <%= ENV['TANGENT_DB_PASSWORD'] %>
+  host: localhost
   #herokuデプロイ用
   # adapter: postgresql
   # encording: unicode
