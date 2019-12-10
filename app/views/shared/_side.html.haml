@@ -1,0 +1,11 @@
+%ul.side
+  %li= link_to 'Tangent', root_path
+  - if user_signed_in?
+    %li= link_to 'マイページ', user_path(current_user)
+    %li= link_to 'ログアウト', destroy_user_session_path, method: "DELETE"
+    %li= link_to '契約書アップロード', new_contract_path
+    %li= link_to '契約書を確認', contracts_path
+  - else
+    %li= link_to '新規ユーザー登録', new_user_registration_path
+    %li= link_to 'ログイン', new_user_session_path
+  %li= link_to '提出する契約書を検索', root_path

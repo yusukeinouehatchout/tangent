@@ -1,1 +1,14 @@
+@import "./reset/ress";
+
 @import "./modules/contracts_index";
+@import "./modules/side";
+
+.flex { // 子要素を横並べにするだけ
+  display: flex;
+}
+
+.main-container { // サイドバー以外の部分
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+}
