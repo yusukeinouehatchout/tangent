@@ -1,0 +1,8 @@
+= render partial: 'shared/header'
+%h2 署名済の契約書
+- @signed_contracts.each do |c|
+  %div
+    %label
+      氏名:#{c.name}
+    = link_to '削除', signed_contract_path(c), method: :DELETE
+  %object{data: c.pdf_url, style: 'height: 500px;'}

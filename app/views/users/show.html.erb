@@ -1,8 +1,0 @@
-<%= render partial: 'shared/header' %>
-
-<h1>マイページ</h1>
-<p>ID：<%= @user.id %></p>
-<p>MAIL：<%= @user.email %></p>
-
-<p><%= link_to '契約書アップロード', new_contract_path%></p>
-<p><%= link_to 'アップロードした契約書を確認', contracts_path%></p>

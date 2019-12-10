@@ -78,11 +78,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+# pdfファイルの操作
 gem 'prawn'
 gem 'prawn-table'
-
 gem 'shrine'
-
 gem 'combine_pdf'
-
 gem 'pdf-reader'
+
+# erbをhamlに変換
+gem 'haml-rails'
+gem 'erb2haml'

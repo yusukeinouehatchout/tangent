@@ -1,0 +1,14 @@
+= render partial: 'shared/header'
+%h1 契約書アップロード
+= form_with model: @contract do |f|
+  %div
+    = f.label :pdf_data
+    %div
+      = f.file_field :pdf
+  %div
+    = f.label :pass, 'パスワード'
+    %div
+      = f.password_field :pass
+  %div
+    = f.submit "send"
+    %div

@@ -1,0 +1,12 @@
+= render partial: 'shared/header'
+%h1 契約書一覧
+.contracts
+  .contracts__templete
+    %h2 契約書テンプレート
+    - @contracts_templete.each do |c|
+      %div
+        %label
+          ID:#{c.contract_id}
+        = link_to '提出されたものを確認する', signed_contracts_path(templete_id: c.id)
+        = link_to '削除', contract_path(c), method: :DELETE
+      %object{data: c.pdf_url, style: 'height: 500px;'}
