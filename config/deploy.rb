@@ -17,7 +17,7 @@ set :deploy_to, '/var/www/tangent'
 set :linked_files, fetch(:linked_files, []).push('config/master.key')
 
 # シンボリックリンクをはるフォルダ
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads/store')
 
 # 保持するバージョンの個数
 set :keep_releases, 5
