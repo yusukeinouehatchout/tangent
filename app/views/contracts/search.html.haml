@@ -1,12 +1,14 @@
-%h1 契約書検索
-= form_with url: '/contracts/show', local: true do |f|
-  %div
+= render 'shared/main-header', title: '契約書検索'
+
+.main-container__contents
+  = form_with url: '/contracts/show', local: true do |f|
     %div
-      %label ID
-    = f.text_field :contract_id
-  %div
+      %div
+        %label ID
+      = f.text_field :contract_id
     %div
-      %label パスワード
-    = f.password_field :pass
-  %div
-    = f.submit '検索'
+      %div
+        %label パスワード
+      = f.password_field :pass
+    %div
+      = f.submit '検索'

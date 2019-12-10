@@ -1,7 +1,9 @@
-%h1 マイページ
-%p
-  ID：#{@user.id}
-%p
-  MAIL：#{@user.email}
-%p= link_to '契約書アップロード', new_contract_path
-%p= link_to 'アップロードした契約書を確認', contracts_path
+= render 'shared/main-header', title: 'マイページ'
+
+.main-container__contents
+  %p
+    ID：#{@user.id}
+  %p
+    MAIL：#{@user.email}
+  %p= link_to '契約書アップロード', new_contract_path
+  %p= link_to 'アップロードした契約書を確認', contracts_path

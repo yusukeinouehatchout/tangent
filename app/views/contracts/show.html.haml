@@ -1,37 +1,40 @@
-%h1 契約書詳細
-%div
-  %p
-    ID:#{@contract.contract_id}
-%object{data: @contract.pdf_url, style: 'height: 500px;'}
-%div
-  %h2 署名
-  %canvas#canvassample{:height => "300", :style => "border:3px solid #000", :width => "500"}
-%div{:style => "padding:10px"}
-  %button{:onclick => "clearCanvas()", :type => "button"} リセット
-%div{:style => "padding:10px"}
-  %button{:onclick => "chgImg()", :type => "button", :value => "1"} 画像変換
-%h3 画像出力
-#img-box
-  %img#newImg/
-= form_with(url: contracts_combine_path(format: "pdf"), local: true) do |f|
-  = f.hidden_field :sign, value: "", id: "param_sign"
-  / jsを使って、出力された画像のURIをhidden_fieldに持たせる
-  = f.hidden_field :id, value: @contract.id
-  = f.submit '署名した契約書をダウンロード'
-%h2 署名した契約書を提出する
-= form_with model: @signed_contract do |f|
+= render 'shared/main-header', title: '契約書検索'
+
+.main-container__contents
+  %h1 契約書詳細
   %div
-    = f.label :pdf_data
-    %div
-      = f.file_field :pdf
+    %p
+      ID:#{@contract.contract_id}
+  %object{data: @contract.pdf_url, style: 'height: 500px;'}
   %div
-    = f.label :name, '氏名'
+    %h2 署名
+    %canvas#canvassample{:height => "300", :style => "border:3px solid #000", :width => "500"}
+  %div{:style => "padding:10px"}
+    %button{:onclick => "clearCanvas()", :type => "button"} リセット
+  %div{:style => "padding:10px"}
+    %button{:onclick => "chgImg()", :type => "button", :value => "1"} 画像変換
+  %h3 画像出力
+  #img-box
+    %img#newImg/
+  = form_with(url: contracts_combine_path(format: "pdf"), local: true) do |f|
+    = f.hidden_field :sign, value: "", id: "param_sign"
+    / jsを使って、出力された画像のURIをhidden_fieldに持たせる
+    = f.hidden_field :id, value: @contract.id
+    = f.submit '署名した契約書をダウンロード'
+  %h2 署名した契約書を提出する
+  = form_with model: @signed_contract do |f|
     %div
-      = f.text_field :name
-  %div
+      = f.label :pdf_data
+      %div
+        = f.file_field :pdf
     %div
-      = f.hidden_field :user_id, value: @contract.user_id
-      = f.hidden_field :templete_id, value: @contract.id
-  %div
-    = f.submit "提出する"
+      = f.label :name, '氏名'
+      %div
+        = f.text_field :name
     %div
+      %div
+        = f.hidden_field :user_id, value: @contract.user_id
+        = f.hidden_field :templete_id, value: @contract.id
+    %div
+      = f.submit "提出する"
+      %div

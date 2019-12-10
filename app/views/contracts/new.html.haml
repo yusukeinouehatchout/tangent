@@ -1,13 +1,15 @@
-%h1 契約書アップロード
-= form_with model: @contract do |f|
-  %div
-    = f.label :pdf_data
+= render 'shared/main-header', title: '契約書アップロード'
+
+.main-container__contents
+  = form_with model: @contract do |f|
     %div
-      = f.file_field :pdf
-  %div
-    = f.label :pass, 'パスワード'
+      = f.label :pdf_data
+      %div
+        = f.file_field :pdf
     %div
-      = f.password_field :pass
-  %div
-    = f.submit "send"
+      = f.label :pass, 'パスワード'
+      %div
+        = f.password_field :pass
     %div
+      = f.submit "send"
+      %div

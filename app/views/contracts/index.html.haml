@@ -1,5 +1,6 @@
-.contracts__templete
-  %h1 契約書一覧
+= render 'shared/main-header', title: '契約書を確認'
+
+.main-container__contents
   %h2 契約書テンプレート
   - @contracts_templete.each do |c|
     %div
