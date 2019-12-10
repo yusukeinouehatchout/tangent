@@ -5,6 +5,7 @@
   padding: 0 2rem;
   display: table;
   position: fixed;
+  z-index: 1;
   &__title {
     display: table-cell;
     vertical-align: middle;

@@ -2,14 +2,13 @@
 
 .main-container__contents
   = form_with model: @contract do |f|
-    %div
+    .main-container__contents__group
       = f.label :pdf_data
       %div
         = f.file_field :pdf
-    %div
+    .main-container__contents__group
       = f.label :pass, 'パスワード'
       %div
         = f.password_field :pass
-    %div
+    .main-container__contents__group
       = f.submit "send"
-      %div

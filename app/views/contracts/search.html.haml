@@ -1,14 +1,14 @@
-= render 'shared/main-header', title: '契約書検索'
+= render 'shared/main-header', title: '提出する契約書を検索'
 
 .main-container__contents
   = form_with url: '/contracts/show', local: true do |f|
-    %div
+    .main-container__contents__group
       %div
         %label ID
       = f.text_field :contract_id
-    %div
+    .main-container__contents__group
       %div
         %label パスワード
       = f.password_field :pass
-    %div
+    .main-container__contents__group
       = f.submit '検索'
