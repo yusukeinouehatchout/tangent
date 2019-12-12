@@ -15,14 +15,14 @@
     .main-container__contents__group
       .field
         = f.label :password
-        %i (leave blank if you don't want to change it)
+        %i (変更しない場合は空白のままにします)
         %br/
         = f.password_field :password, autocomplete: "new-password"
         - if @minimum_password_length
           %br/
           %em
             = @minimum_password_length
-            characters minimum
+            文字以上
 
     .main-container__contents__group
       .field
@@ -33,7 +33,6 @@
     .main-container__contents__group
       .field
         = f.label :current_password
-        %i (we need your current password to confirm your changes)
         %br/
         = f.password_field :current_password, autocomplete: "current-password"
 
@@ -51,12 +50,10 @@
 
     .main-container__contents__group
       .actions
-        = f.submit "Update"
+        = f.submit "更新"
 
-  .main-container__contents__group
-    %h3 Cancel my account
-    %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-
-  .main-container__contents__group
-    = link_to "Back", :back
+  -# 退会処理、後々実装
+  -# .main-container__contents__group
+  -#   %h3 Cancel my account
+  -#   %p
+  -#     Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}

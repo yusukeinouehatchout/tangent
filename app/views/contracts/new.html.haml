@@ -3,7 +3,7 @@
 .main-container__contents
   = form_with model: @contract do |f|
     .main-container__contents__group
-      = f.label :pdf_data
+      = f.label :pdf_data, 'PDFファイル'
       %div
         = f.file_field :pdf
     .main-container__contents__group
@@ -11,4 +11,4 @@
       %div
         = f.password_field :pass
     .main-container__contents__group
-      = f.submit "send"
+      = f.submit "アップロード"

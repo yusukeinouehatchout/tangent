@@ -103,6 +103,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.0)
+      devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     down (5.0.0)
       addressable (~> 2.5)
     erb2haml (0.1.5)
@@ -310,6 +313,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   combine_pdf
   devise
+  devise-i18n
+  devise-i18n-views
   erb2haml
   haml-rails
   jbuilder (~> 2.5)

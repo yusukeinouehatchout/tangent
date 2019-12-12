@@ -88,3 +88,7 @@ gem 'pdf-reader'
 # erbをhamlに変換
 gem 'haml-rails'
 gem 'erb2haml'
+
+# deviseを日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
