@@ -1,8 +1,7 @@
 %ul.side
   %li= link_to 'Tangent', root_path
   - if user_signed_in?
-    %li= link_to 'マイページ', user_path(current_user)
-    %li= link_to 'ログアウト', destroy_user_session_path, method: "DELETE"
+    %li= link_to 'アカウント', user_path(current_user)
     %li= link_to '契約書アップロード', new_contract_path
     %li= link_to '契約書を確認', contracts_path
   - else
