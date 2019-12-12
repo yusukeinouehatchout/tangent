@@ -1,9 +1,23 @@
 = render 'shared/main-header', title: 'マイページ'
 
 .main-container__contents
-  %p
-    ID：#{@user.id}
-  %p
-    MAIL：#{@user.email}
-  %p= link_to '契約書アップロード', new_contract_path
-  %p= link_to 'アップロードした契約書を確認', contracts_path
+  .main-container__contents__group
+    = @user.name
+
+  .main-container__contents__group
+    .sub-info
+      =@user.belongs
+
+  .main-container__contents__group
+    .sub-info
+      ID：#{@user.id}
+
+  .main-container__contents__group
+    .sub-info
+      email：#{@user.email}
+
+  .main-container__contents__group
+    = link_to 'ログアウト', destroy_user_session_path, method: "DELETE"
+
+  .main-container__contents__group
+    = link_to 'ユーザー情報の編集', edit_user_registration_path
