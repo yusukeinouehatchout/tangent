@@ -94,10 +94,13 @@ class ContractsController < ApplicationController
   end
 
   def combine   # 契約書と署名のpdfをマージして、ユーザーにダウンロードさせる→ダウンロードさせた契約書をアップロードしてもらう
-    sign = Sign.create!(image_data_uri: sign_params)
-    sign_url = "public/" + sign.image.url
-    contract_url = "public/" + find_contract.pdf.url
+    sign = Sign.create!(image_data_uri: sign_params)      # 署名の画像データ
+    sign_url = "public/" + sign.image.url                 # 署名の画像データのURL
+    contract_url = "public/" + find_contract.pdf.url      # 契約書のURL
 
+    uuid = SecureRandom.uuid    # 提出する署名済契約書を識別するための一意の文字列を生成
+
+    # 契約書と署名を結合して、cacheに一時保存
     respond_to do |format|
       format.pdf do
         sign_pdf = RecordPdf.new(sign_url).render
@@ -105,13 +108,17 @@ class ContractsController < ApplicationController
         @combine_pdf = CombinePDF.new
         @combine_pdf << CombinePDF.load(contract_url)
         @combine_pdf << CombinePDF.parse(sign_pdf)
-        @combine_pdf.save "combined.pdf"
-        send_data @combine_pdf.to_pdf,
-          filename:    'combined.pdf',
-          type:        'application/pdf'
+        @combine_pdf.save "public/uploads/cache/#{uuid}combined.pdf"
       end
     end
-    sign.destroy
+    sign.destroy  # 署名の画像データは不要になるため削除
+
+    # cacheに一時保存した署名済契約書をアップロードして、DBに保存
+    signed_pdf = Rack::Test::UploadedFile.new("public/uploads/cache/#{uuid}combined.pdf", "application/pdf")
+    @signed_contract = new_signed_contract(signed_pdf)
+    @signed_contract.save
+
+    redirect_to root_path
   end
 
   def destroy
@@ -140,5 +147,13 @@ class ContractsController < ApplicationController
 
   def search_contract
     Contract.find_by(contract_id: seach_params[:contract_id])
+  end
+
+  def signed_name_params
+    params.permit(:name)
+  end
+
+  def new_signed_contract(signed_pdf)
+    SignedContract.new(templete_id: find_contract.id, user_id: find_contract.user_id, pdf: signed_pdf, name: signed_name_params[:name])
   end
 end
