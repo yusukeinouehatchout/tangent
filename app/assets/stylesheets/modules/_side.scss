@@ -2,16 +2,22 @@
   background-color: #293140;
   height: 100vh;
   width: 20%;
-  text-align: center;
   a {
     text-decoration: none;
     color: white;
+    font-size: 1rem;
   }
   li {
     height: 3rem;
     line-height: 3rem;
     list-style-type: none;
+    padding-left: 1rem;
   }
+  &__icon {
+    font-size: 1rem;
+    color: white;
+  }
+
   .selected-menu {
     color: #1EA6D6;
   }

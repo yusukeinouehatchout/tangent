@@ -1,10 +1,25 @@
 %ul.side
   %li= link_to 'Tangent', root_path
   - if user_signed_in?
-    %li= link_to 'アカウント', user_path(current_user), class: "#{@selected_menu[:account]}"
-    %li= link_to '契約書アップロード', new_contract_path, class: "#{@selected_menu[:new_contracts]}"
-    %li= link_to '契約書を確認', contracts_path, class: "#{@selected_menu[:index_contracts]}"
+    %li
+      = link_to user_path(current_user), class: "#{@selected_menu[:account]}" do
+        = icon("fas", "user", class: "side__icon fa-fw")
+        アカウント
+    %li
+      = link_to new_contract_path, class: "#{@selected_menu[:new_contracts]}" do
+        = icon("fas", "file-upload", class: "side__icon fa-fw")
+        契約書アップロード
+    %li
+      = link_to contracts_path, class: "#{@selected_menu[:index_contracts]}" do
+        = icon("fas", "check-square", class: "side__icon fa-fw")
+        契約書を確認
   - else
-    %li= link_to '新規ユーザー登録', new_user_registration_path, class: "#{@selected_menu[:sign_up]}"
-    %li= link_to 'ログイン', new_user_session_path, class: "#{@selected_menu[:login]}"
-  %li= link_to '提出する契約書を検索', root_path, class: "#{@selected_menu[:search_contracts]}"
+    %li
+      = icon("fas", "user-plus", class: "side__icon fa-fw")
+      = link_to '新規ユーザー登録', new_user_registration_path, class: "#{@selected_menu[:sign_up]}"
+    %li
+      = icon("fas", "sign-in-alt", class: "side__icon fa-fw")
+      = link_to 'ログイン', new_user_session_path, class: "#{@selected_menu[:login]}"
+  %li
+    = icon("fas", "search", class: "side__icon fa-fw")
+    = link_to '提出する契約書を検索', root_path, class: "#{@selected_menu[:search_contracts]}"
