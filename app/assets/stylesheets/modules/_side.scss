@@ -1,5 +1,5 @@
 .side {
-  background-color: navy;
+  background-color: #293140;
   height: 100vh;
   width: 20%;
   text-align: center;
@@ -11,5 +11,8 @@
     height: 3rem;
     line-height: 3rem;
     list-style-type: none;
+  }
+  .selected-menu {
+    color: #1EA6D6;
   }
 }
