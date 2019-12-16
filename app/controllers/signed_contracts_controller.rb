@@ -1,5 +1,6 @@
 class SignedContractsController < ApplicationController
   def index
+    @selected_menu[:index_contracts] = "selected-menu"
     @signed_contracts = SignedContract.where(user_id: current_user.id, templete_id: params[:templete_id])
   end
 

@@ -52,6 +52,7 @@ class ContractsController < ApplicationController
   end
 
   def new
+    @selected_menu[:new_contracts] = "selected-menu"
     @contract = Contract.new
   end
 
@@ -74,14 +75,16 @@ class ContractsController < ApplicationController
   end
 
   def index
+    @selected_menu[:index_contracts] = "selected-menu"
     @contracts_templete = Contract.where(user_id: current_user.id)
   end
 
   def search
-
+    @selected_menu[:search_contracts] = "selected-menu"
   end
 
   def show
+    @selected_menu[:search_contracts] = "selected-menu"
     if !Contract.exists?(contract_id: seach_params[:contract_id])
       render 'search'
     elsif search_contract.pass != seach_params[:pass]

@@ -1,10 +1,10 @@
 %ul.side
   %li= link_to 'Tangent', root_path
   - if user_signed_in?
-    %li= link_to 'アカウント', user_path(current_user)
-    %li= link_to '契約書アップロード', new_contract_path
-    %li= link_to '契約書を確認', contracts_path
+    %li= link_to 'アカウント', user_path(current_user), class: "#{@selected_menu[:account]}"
+    %li= link_to '契約書アップロード', new_contract_path, class: "#{@selected_menu[:new_contracts]}"
+    %li= link_to '契約書を確認', contracts_path, class: "#{@selected_menu[:index_contracts]}"
   - else
-    %li= link_to '新規ユーザー登録', new_user_registration_path
-    %li= link_to 'ログイン', new_user_session_path
-  %li= link_to '提出する契約書を検索', root_path
+    %li= link_to '新規ユーザー登録', new_user_registration_path, class: "#{@selected_menu[:sign_up]}"
+    %li= link_to 'ログイン', new_user_session_path, class: "#{@selected_menu[:login]}"
+  %li= link_to '提出する契約書を検索', root_path, class: "#{@selected_menu[:search_contracts]}"
