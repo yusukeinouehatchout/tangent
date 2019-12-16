@@ -94,4 +94,4 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 # fontawsome導入
-gem 'font-awesome-sass'
+gem 'font-awesome-rails'
