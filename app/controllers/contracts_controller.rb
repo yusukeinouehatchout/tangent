@@ -30,16 +30,13 @@ class ContractsController < ApplicationController
       contract_url = "public/" + Contract.find(templete_id).pdf.url
 
       respond_to do |format|
-        format.pdf do
+        format.html do
           sign_pdf = RecordPdf.new(sign_url).render
   
           @combine_pdf = CombinePDF.new
           @combine_pdf << CombinePDF.load(contract_url)
           @combine_pdf << CombinePDF.parse(sign_pdf)
           @combine_pdf.save "public/uploads/cache/#{uuid}combined.pdf"
-          send_data @combine_pdf.to_pdf,
-            filename:    'combined.pdf',
-            type:        'application/pdf'
         end
       end
       sign.destroy
@@ -48,6 +45,7 @@ class ContractsController < ApplicationController
       @signed_contract = SignedContract.new(templete_id: templete_id, user_id: user_id, pdf: p, name: name)
       @signed_contract.save
 
+      render json: { massage: '提出成功' }
     end
   end
 
