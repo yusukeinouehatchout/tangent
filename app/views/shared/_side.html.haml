@@ -1,5 +1,9 @@
 %ul.side
-  %li= link_to 'Tangent', root_path
+  %li
+    = link_to root_path do
+      = image_tag 'tangent_icon.png', class: "side__icon"
+      .side__title
+        Tangent
   - if user_signed_in?
     %li
       = link_to user_path(current_user), class: "#{@selected_menu[:account]}" do
