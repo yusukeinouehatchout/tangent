@@ -1,0 +1,69 @@
+.main-container { // サイドバー以外の部分
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  position: relative;
+  &__contents {
+    width: 40%;
+    // background-color: whitesmoke;
+    margin: 9rem auto;
+    a {
+      text-decoration: none;
+      color: blue;
+      }
+    &__group {
+      margin-bottom: 1rem;
+    }
+    label {
+      position: relative;
+      display: inline-block;
+      font-weight: bold;
+      padding: 0.25em 0.5em;
+      margin-bottom: 0.25em;
+      text-decoration: none;
+      color: #00BCD4;
+      background: #ECECEC;
+      transition: .4s;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      border: lightgray solid 1px;
+    }
+    input[type="submit"] {
+      position: relative;
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      text-decoration: none;
+      color: #FFF;
+      background: #fd9535;
+      border-bottom: solid 2px #d27d00;
+      border-radius: 4px;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+      font-weight: bold;
+    }
+    input[type="submit"]:active {
+      border-bottom: solid 2px #fd9535;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+    }
+    object {
+      height: 750px;
+      width: 100%;
+    }
+    button {
+      display: inline-block;
+      padding: 0.25em 0.25em;
+      text-decoration: none;
+      background: #668ad8;/*ボタン色*/
+      color: #FFF;
+      border-bottom: solid 4px #627295;
+      border-radius: 3px;
+    }
+    #canvassample, #img-box {
+      border: 1px dotted #000;
+    }
+    .sub-info {
+      color: gray;
+      font-size: 0.8rem;
+    }
+  }
+}
