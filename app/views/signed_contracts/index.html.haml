@@ -5,5 +5,5 @@
     %div
       %label
         氏名:#{c.name}
-      = link_to '削除', signed_contract_path(c), method: :DELETE
+      = link_to '削除', signed_contract_path(c), method: :DELETE, data: {confirm: "削除しますか？"}
     %object{data: c.pdf_url}

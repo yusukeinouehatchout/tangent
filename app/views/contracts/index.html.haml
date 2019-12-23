@@ -7,5 +7,5 @@
       %label
         ID:#{c.contract_id}
       = link_to '提出されたものを確認する', signed_contracts_path(templete_id: c.id)
-      = link_to '削除', contract_path(c), method: :DELETE
+      = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この契約書に提出された契約書も削除されます。\n削除しますか？"}
       %object{data: c.pdf_url}

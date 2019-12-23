@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
                         login: "",
                         sign_up: ""}
     end
+
+    def after_sign_in_path_for(resource) 
+      contracts_path
+    end
 end
