@@ -11,13 +11,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :contracts, only: [:new, :create, :index, :destroy]
-  resources :signed_contracts, only: [:create, :index, :show, :destroy]
+  resources :signed_contracts, only: [:create, :index, :destroy]
 
   root 'top#index'
   get 'contracts/search' => 'contracts#search'
   post 'contracts/show' => 'contracts#show'
   post 'contracts/combine' => 'contracts#combine'
   post 'contracts/create_signed_pdf' => 'contracts#create_signed_pdf'
+  get 'signed_contracts/every_templete_index' => 'signed_contracts#every_templete_index'
 
   get 'contracts/api_request' => 'contracts#api_request'
   post 'contracts/api_response' => 'contracts#api_response'

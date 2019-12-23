@@ -1,11 +1,13 @@
 = render 'shared/main-header', title: '契約書を確認'
 
 .main-container__contents
+  .main-container__contents__group
+    = link_to '全ての提出されたものを確認する', signed_contracts_path
   %h2 契約書テンプレート
   - @contracts_templete.each do |c|
     .main-container__contents__group
       %label
         ID:#{c.contract_id}
-      = link_to '提出されたものを確認する', signed_contracts_path(templete_id: c.id)
+      = link_to '提出されたものを確認する', signed_contracts_every_templete_index_path(templete_id: c.id)
       = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この契約書に提出された契約書も削除されます。\n削除しますか？"}
       %object{data: c.pdf_url}
