@@ -1,6 +1,9 @@
 = render 'shared/main-header', title: '提出する契約書を検索'
 
 .main-container__contents
+  .main-container__contents__error
+    - if !@error_msg.blank?
+      = @error_msg
   = form_with url: '/contracts/show', local: true do |f|
     .main-container__contents__group
       %div

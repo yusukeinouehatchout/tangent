@@ -84,8 +84,10 @@ class ContractsController < ApplicationController
   def show
     @selected_menu[:search_contracts] = "selected-menu"
     if !Contract.exists?(contract_id: seach_params[:contract_id])
+      @error_msg = "※入力された契約書IDは存在しません。"
       render 'search'
     elsif search_contract.pass != seach_params[:pass]
+      @error_msg = "※パスワードが間違っています。"
       render 'search'
     else
       @contract = search_contract
