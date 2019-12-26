@@ -8,14 +8,20 @@
     font-size: 1.1rem;
     display: block;
   }
-  a:hover {
-    color: #1EA6D6;
-  }
-  li {
+  li:first-of-type {
     height: 6rem;
     line-height: 6rem;
     list-style-type: none;
     padding-left: 1rem;
+  }
+  li:nth-of-type(n+2) {
+    height: 6rem;
+    line-height: 6rem;
+    list-style-type: none;
+    padding-left: 1rem;
+    a:hover {
+      color: #1EA6D6;
+    }
   }
   &__icon {
     height: 2rem;
