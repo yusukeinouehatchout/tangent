@@ -9,7 +9,6 @@
     margin: 9rem auto;
     a {
       text-decoration: none;
-      color: blue;
       }
     &__group {
       margin-bottom: 1rem;
@@ -69,4 +68,46 @@
       color: red;
     }
   }
+}
+
+.contract-confirm {
+  display: inline-block;
+	padding: 0.1em;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background:#0C88CA;
+	border-bottom:4px solid #005691;
+	border-radius: 4px;
+	transition: .0s;
+}
+
+.contract-confirm:active {
+  cursor: pointer;
+  text-decoration: none;
+  background:#005691;
+  transform: translate3d(0, 4px, 0);
+  transition: .0s;
+  border-bottom: none;
+}
+
+.contract-delete {
+  display: inline-block;
+	padding: 0.1em;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background:red;
+	border-bottom:4px solid darkred;
+	border-radius: 4px;
+	transition: .0s;
+}
+
+.contract-delete:active {
+  cursor: pointer;
+  text-decoration: none;
+  background:darkred;
+  transform: translate3d(0, 4px, 0);
+  transition: .0s;
+  border-bottom: none;
 }
