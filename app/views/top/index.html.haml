@@ -1,5 +1,28 @@
 = render 'shared/main-header', title: 'About Tangent'
 
-.main-container__contents
-  top#index
-  (Tangentの説明ページ)
+.main-container__top
+
+  .main-container__top__description
+    = fa_icon "handshake-o"
+    .main-container__top__description__sentence
+      パソコンとスマホだけで契約を完結しませんか？
+      %br/
+      もう紙で管理する必要はありません
+      %br/
+      郵送や直接手渡しする必要もありません
+
+  %ul.main-container__top__menus
+    %li.main-container__top__menus__uploader
+      = link_to contracts_path, class: "" do
+        %h2 契約書を発行する方はこちら
+        = fa_icon "file-text fw"
+
+    %li.main-container__top__menus__signer
+      = link_to contracts_search_path, class: "" do
+        %h2 契約書を提出する方はこちら
+        = fa_icon "pencil-square fw"
+
+  .main-container__top__hatchout-link
+    提供：
+    = link_to "https://hatchout.net/" do
+      = image_tag 'hatchout_text.png', class: "main-container__top__hatchout-link__image"

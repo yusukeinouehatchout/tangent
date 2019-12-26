@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   protect_from_forgery with: :null_session
+  before_action :authenticate_user!, only: [:new, :create, :index]
 
   def api_request
   end
