@@ -1,13 +1,13 @@
-= render 'shared/main-header', title: '契約書を確認'
+= render 'shared/main-header', title: '書類を確認'
 
 .main-container__contents
   .main-container__contents__group
-    = link_to '全ての提出されたものを確認する', signed_contracts_path, class: "contract-confirm"
-  %h2 契約書テンプレート
+    = link_to '全ての提出された書類を確認する', signed_contracts_path, class: "contract-confirm"
+  %h2 原本一覧
   - @contracts_templete.each do |c|
     .main-container__contents__group
       %label
         ID:#{c.contract_id}
-      = link_to '提出されたものを確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
-      = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この契約書に提出された契約書も削除されます。\n削除しますか？"}, class: "contract-delete"
+      = link_to '提出された書類を確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
+      = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この原本に提出された書類も削除されます。\n本当に削除しますか？"}, class: "contract-delete"
       %object{data: c.pdf_url}

@@ -1,4 +1,4 @@
-= render 'shared/main-header', title: '提出する契約書を検索'
+= render 'shared/main-header', title: '署名する書類を検索'
 
 .main-container__contents
   .main-container__contents__error
@@ -7,7 +7,7 @@
   = form_with url: '/contracts/show', local: true do |f|
     .main-container__contents__group
       %div
-        %label 契約書ID
+        %label 書類ID
       = f.text_field :contract_id
     .main-container__contents__group
       %div

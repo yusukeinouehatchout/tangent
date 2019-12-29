@@ -12,11 +12,11 @@
     %li
       = link_to new_contract_path, class: "#{@selected_menu[:new_contracts]}" do
         = fa_icon "cloud-upload fw"
-        契約書アップロード
+        原本アップロード
     %li
       = link_to contracts_path, class: "#{@selected_menu[:index_contracts]}" do
         = fa_icon "check-square fw"
-        契約書を確認
+        書類を確認
   - else
     %li
       = link_to new_user_registration_path, class: "#{@selected_menu[:sign_up]}" do
@@ -29,8 +29,8 @@
   %li
     = link_to contracts_search_path, class: "#{@selected_menu[:search_contracts]}" do
       = fa_icon "search fw"
-      提出する契約書を検索
+      署名する書類を検索
   %li
     = link_to top_policy_path, class: "#{@selected_menu[:policy]}" do
-      = fa_icon "search fw"
+      = fa_icon "exclamation-circle fw"
       利用規約・プライバシーポリシー
