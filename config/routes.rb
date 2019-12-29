@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :signed_contracts, only: [:create, :index, :destroy]
 
   root 'top#index'
+  get 'top/policy' => 'top#policy'
   get 'contracts/search' => 'contracts#search'
   post 'contracts/show' => 'contracts#show'
   post 'contracts/combine' => 'contracts#combine'

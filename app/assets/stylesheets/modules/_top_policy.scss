@@ -1,0 +1,49 @@
+.main-container__top {
+  &__policy-container {
+    font-size: 0;
+    &__menu {
+      display: inline-block;
+        width: 50%;
+        text-align: center;
+        font-size: 2rem;
+        background-color: lightgray;
+        border-bottom: #5ab4bd solid 3px;
+    }
+    &__menu:hover {
+      cursor: pointer;
+      opacity: 0.75;
+    }
+    &__policy {
+      display: none;
+      background-color: #FFFFDD;
+      padding: 1rem 1rem 4rem 1rem;
+      &__title {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      &__article {
+        margin-top: 2rem;
+        font-size: 1rem;
+      }
+      &__end {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        margin-top: 3rem;
+        font-size: 1rem;
+      }
+    }
+    #terms-radio:checked ~ .terms,
+    #privacy-radio:checked ~ .privacy {
+      display: block;
+    }
+    #terms-radio:checked ~ .menu-terms,
+    #privacy-radio:checked ~ .menu-privacy {
+      background-color: #5ab4bd;
+      // color: white;
+    }
+    input[name="policy-menu"] {
+      display: none;
+    }
+  }
+}
