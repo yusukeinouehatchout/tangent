@@ -10,4 +10,7 @@
         ID:#{c.contract_id}
       = link_to '提出された書類を確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
       = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この原本に提出された書類も削除されます。\n本当に削除しますか？"}, class: "contract-delete"
+      .sub-info
+        署名人数：
+        = c.signed_contracts.length
       %object{data: c.pdf_url}
