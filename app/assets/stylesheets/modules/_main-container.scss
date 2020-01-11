@@ -67,6 +67,23 @@
     &__error {
       color: red;
     }
+
+    &__applink {
+      text-align: center;
+      position: relative;
+      margin-bottom: 4rem;
+      &__txt {
+        
+      }
+      &__iphone {
+        display: inline-block;
+        position: relative;
+        bottom: 10px;
+      }
+      &__android {
+        display: inline-block;
+      }
+    }
   }
 }
 

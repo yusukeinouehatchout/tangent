@@ -1,9 +1,24 @@
 = render 'shared/main-header', title: '署名する書類を検索'
 
 .main-container__contents
+
+  .main-container__contents__applink
+    .main-container__contents__applink__txt
+      署名をする方はこちらのアプリをダウンロードしてください
+
+    .main-container__contents__applink__iphone
+      = link_to "https://apps.apple.com/jp/app/%E9%9B%BB%E5%AD%90%E7%BD%B2%E5%90%8D%E6%B4%BB%E5%8B%95%E3%82%A2%E3%83%97%E3%83%AA-tangent/id1493061235", target: :_blank do
+        %img(src="https://linkmaker.itunes.apple.com/assets/shared/badges/ja-jp/appstore-lrg.svg" alt="TangentのiPhoneアプリ" width="170" height="55" )/
+    .main-container__contents__applink__android
+      = link_to "https://play.google.com/store/apps/details?id=net.hatchout.tangent", target: :_blank do
+        %img(src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="TangentのiPhoneアンドロイドアプリ" width="200" height="77")/
+
   .main-container__contents__error
     - if !@error_msg.blank?
       = @error_msg
+  
+  .main-container__contents__group
+    こちらのwebからも検索・署名できます
   = form_with url: '/contracts/show', local: true do |f|
     .main-container__contents__group
       %div
