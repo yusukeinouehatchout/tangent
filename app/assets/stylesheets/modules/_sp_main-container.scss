@@ -1,0 +1,17 @@
+@media screen and (max-width:999px) {
+  .main-container { // サイドバー以外の部分
+    &__contents {
+      margin: 12rem auto;
+      width: 60%;
+      &__group {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      &__applink {
+        &__txt {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

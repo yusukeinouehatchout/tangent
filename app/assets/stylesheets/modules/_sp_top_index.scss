@@ -1,0 +1,25 @@
+@media screen and (max-width:999px) {
+  .main-container__top {
+    margin-top: 15rem;
+    &__description {
+      display: block;
+      text-align: center;
+      font-size: 2.6rem;
+      i {
+        font-size: 15rem;
+      }
+    }
+    &__menus {
+      display: block;
+      li {
+        width: 100%;
+      }
+    }
+    &__hatchout-link {
+      font-size: 2rem;
+      &__image {
+        height: 3rem;
+      }
+    }
+  }
+}

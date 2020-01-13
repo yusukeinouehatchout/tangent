@@ -1,19 +1,24 @@
 = render 'shared/main-header', title: 'アカウント'
 
 .main-container__contents
-  .main-container__contents__group
-    = @user.name
+  .flex
+    .user-info
+      .main-container__contents__group
+        = @user.name
 
-  .main-container__contents__group
-    .sub-info
-      =@user.belongs
+      .main-container__contents__group
+        .sub-info
+          =@user.belongs
 
-  .main-container__contents__group
-    .sub-info
-      email：#{@user.email}
+      .main-container__contents__group
+        .sub-info
+          email：#{@user.email}
 
-  .main-container__contents__group
-    = link_to 'ログアウト', destroy_user_session_path, method: "DELETE"
+      .main-container__contents__group
+        = link_to 'ログアウト', destroy_user_session_path, method: "DELETE"
 
-  .main-container__contents__group
-    = link_to 'ユーザー情報の編集', edit_user_registration_path
+      .main-container__contents__group
+        = link_to 'ユーザー情報の編集', edit_user_registration_path
+
+    %div
+      %i.fa.fa-address-card.sub-info{"aria-hidden" => "true", style: "font-size: 15rem;"}

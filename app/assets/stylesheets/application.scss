@@ -9,3 +9,10 @@
 @import "./modules/main-container";
 @import "./modules/top_index";
 @import "./modules/top_policy";
+
+@import "./common/sp_common.scss";
+
+@import "./modules/sp_top_index";
+@import "./modules/sp_side";
+@import "./modules/sp_main-header";
+@import "./modules/sp_main-container";

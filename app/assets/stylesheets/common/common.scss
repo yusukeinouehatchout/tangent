@@ -5,3 +5,11 @@ ol {
 .flex { // 子要素を横並べにするだけ
   display: flex;
 }
+
+.sp_br {
+  display: none;
+}
+
+.user-info {
+  padding-right: 1rem;
+}

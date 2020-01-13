@@ -1,0 +1,17 @@
+@media screen and (max-width:999px) {
+  .header {
+    height: 10rem;
+    font-size: 3rem;
+    &__image {
+      display: block;
+      img {
+        position: fixed;
+        top: 9px;
+        right: 0;
+      }
+    }
+      &__title {
+      text-align: center;
+    }
+  }
+}
