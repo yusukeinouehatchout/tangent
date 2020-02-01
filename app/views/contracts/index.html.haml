@@ -1,16 +1,20 @@
 = render 'shared/main-header', title: '書類を確認'
 
-.main-container__contents
-  .main-container__contents__group
+.flex
+  .document_grid_content
+    .content
+      .main-container__contents__group
+        %h2 原本一覧
+        .row
+          - @contracts_templete.each do |c|
+            .main-container__contents__group.col-lg-3
+              %label.document_id
+                ID:#{c.contract_id}
+              .sub-info
+                署名人数：
+                = c.signed_contracts.length
+              %object{data: c.pdf_url, width: "100%", height: 300}
+
+  -# 選択中の書類のメニューを表示するエリア
+  .docuent_menu
     = link_to '全ての提出された書類を確認する', signed_contracts_path, class: "contract-confirm"
-  %h2 原本一覧
-  - @contracts_templete.each do |c|
-    .main-container__contents__group
-      %label
-        ID:#{c.contract_id}
-      = link_to '提出された書類を確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
-      = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この原本に提出された書類も削除されます。\n本当に削除しますか？"}, class: "contract-delete"
-      .sub-info
-        署名人数：
-        = c.signed_contracts.length
-      %object{data: c.pdf_url}

@@ -95,3 +95,7 @@ gem 'devise-i18n-views'
 
 # fontawsome導入
 gem 'font-awesome-rails'
+
+#bootstrap導入
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'

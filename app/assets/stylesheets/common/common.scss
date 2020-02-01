@@ -13,3 +13,40 @@ ol {
 .user-info {
   padding-right: 1rem;
 }
+
+.sub-info {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.document_grid_content {
+  width: calc(100% - 20rem);
+  margin: 9rem 1rem 0;
+  padding-right: 3rem;
+}
+
+.document_id {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  margin-bottom: 0.25em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.1875em);
+  }
+}
+
+.docuent_menu {
+  padding: 9rem 1rem 0;
+  width: 20rem;
+  height: 100vh;
+  background-color: lightgray;
+  position: fixed;
+  right: 0;
+}
