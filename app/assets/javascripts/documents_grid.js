@@ -1,3 +1,5 @@
+console.log('aaaaaaaaaa')
+
 $(function(){
   $('.document_id').click(function(){
     var document_id = $(this).text()
