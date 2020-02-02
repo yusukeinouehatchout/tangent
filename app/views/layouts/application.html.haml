@@ -12,4 +12,5 @@
       = render partial: 'shared/side'
       .main-container
         = yield
+    %script{:crossorigin => "anonymous", :integrity => "sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb", :src => "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
