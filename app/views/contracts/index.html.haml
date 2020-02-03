@@ -10,8 +10,9 @@
             .main-container__contents__group.col-lg-3
               %label.document_id
                 ID:#{c.contract_id}
-              = link_to '提出された書類を確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
-              = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この原本に提出された書類も削除されます。\n本当に削除しますか？"}, class: "contract-delete"
+              -# ↓↓↓選択中書類のメニューが上手く行かなくなった時に戻せるように、残しておく↓↓↓
+              -# = link_to '提出された書類を確認する', signed_contracts_every_templete_index_path(templete_id: c.id), class: "contract-confirm"
+              -# = link_to '削除', contract_path(c), method: :DELETE, data: {confirm: "この原本に提出された書類も削除されます。\n本当に削除しますか？"}, class: "contract-delete"
               .sub-info
                 署名人数：
                 = c.signed_contracts.length
@@ -20,5 +21,9 @@
   -# 選択中の書類のメニューを表示するエリア
   .docuent_menu
     = link_to '全ての提出された書類を確認する', signed_contracts_path, class: "contract-confirm"
+    %br/
+    %br/
+    %br/
+    %p 書類が選択されていません
 
 = javascript_include_tag 'documents_grid.js', 'data-turbolinks-track': 'reload'
