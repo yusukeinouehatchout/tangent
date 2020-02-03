@@ -1,12 +1,3 @@
 = render 'shared/main-header', title: '書類を確認 > 全ての署名済の書類'
 
-.main-container__contents
-  - @signed_contracts.each do |c|
-    %div
-      %label
-        氏名:#{c.name}
-      = link_to '削除', signed_contract_path(c), method: :DELETE, data: {confirm: "削除しますか？"}, class: "contract-delete"
-    .sub-info
-      提出日時：
-      = c.created_at.to_s(:datetime_jp)
-    %object{data: c.pdf_url}
+= render 'shared/signed_contracts_index.html.haml'
