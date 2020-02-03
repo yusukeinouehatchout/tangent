@@ -6,11 +6,10 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag 'favicon48.ico'
   %body
     .flex
       = render partial: 'shared/side'
       .main-container
         = yield
-    %script{:crossorigin => "anonymous", :integrity => "sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb", :src => "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"}
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

@@ -30,20 +30,22 @@
     .main-container__contents__group
       = f.submit '提出'
 
-  -# %h2 署名した契約書を提出する
-  -# = form_with model: @signed_contract do |f|
-  -#   .main-container__contents__group
-  -#     = f.label :pdf_data
-  -#     %div
-  -#       = f.file_field :pdf
-  -#   .main-container__contents__group
-  -#     = f.label :name, '氏名'
-  -#     %div
-  -#       = f.text_field :name
-  -#   %div
-  -#     %div
-  -#       = f.hidden_field :user_id, value: @contract.user_id
-  -#       = f.hidden_field :templete_id, value: @contract.id
-  -#   .main-container__contents__group
-  -#     = f.submit "提出する"
-  -#     %div
+= javascript_include_tag 'contracts.js', 'data-turbolinks-track': 'reload'
+
+-# %h2 署名した契約書を提出する
+-# = form_with model: @signed_contract do |f|
+-#   .main-container__contents__group
+-#     = f.label :pdf_data
+-#     %div
+-#       = f.file_field :pdf
+-#   .main-container__contents__group
+-#     = f.label :name, '氏名'
+-#     %div
+-#       = f.text_field :name
+-#   %div
+-#     %div
+-#       = f.hidden_field :user_id, value: @contract.user_id
+-#       = f.hidden_field :templete_id, value: @contract.id
+-#   .main-container__contents__group
+-#     = f.submit "提出する"
+-#     %div
