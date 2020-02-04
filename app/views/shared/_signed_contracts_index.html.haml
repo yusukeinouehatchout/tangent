@@ -1,10 +1,20 @@
-.main-container__contents
-  - @signed_contracts.each do |c|
-    %div
-      %label
-        氏名:#{c.name}
-      = link_to '削除', signed_contract_path(c), method: :DELETE, data: {confirm: "削除しますか？"}, class: "contract-delete"
-    .sub-info
-      提出日時：
-      = c.created_at.to_s(:datetime_jp)
-    %object{data: c.pdf_url}
+
+.flex
+  .document_grid_content
+    .content
+      .main-container__contents__group
+        .row
+
+          - @signed_contracts.each do |c|
+            .main-container__contents__group.col-lg-3
+              %label.signer_name
+                氏名:#{c.name}
+              = link_to '削除', signed_contract_path(c), method: :DELETE, data: {confirm: "削除しますか？"}, class: "contract-delete", style: "display: none"
+              .sub-info
+                提出日時：
+                %br/
+                = c.created_at.to_s(:datetime_jp)
+              %object{data: c.pdf_url, width: "100%", height: 300}
+
+  .docuent_menu
+    %p 書類が選択されていません

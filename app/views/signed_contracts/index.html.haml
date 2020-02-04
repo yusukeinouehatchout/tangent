@@ -1,3 +1,5 @@
 = render 'shared/main-header', title: '書類を確認 > 全ての署名済の書類'
 
 = render 'shared/signed_contracts_index.html.haml'
+
+= javascript_include_tag 'documents_grid.js', 'data-turbolinks-track': 'reload'
